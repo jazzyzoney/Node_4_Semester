@@ -1,0 +1,18 @@
+<h1>contact</h1>
+
+<!-- task: create a form that allows users to send a message - what type of fields would make sense to include -->
+
+    <form action="/api/contact" method="POST">
+        <fieldset>
+            <label>Name</label>
+            <input name="name" id="name" required placeholder="name...">
+
+            <label>Email</label>
+            <input name="email" id="email" type="email" required placeholder="email..."> 
+
+            <label>Message</label>
+            <textarea required name="message"></textarea>
+
+            <button>Submit</button>
+        </fieldset>
+    </form>

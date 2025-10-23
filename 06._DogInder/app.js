@@ -7,7 +7,16 @@ const app = express();
 
 app.use(express.static("public"));
 
+import matchesRouter from "./routers/matchesRouter.js"
+app.use(matchesRouter)
+
+import contactRouter from "./routers/contactRouter.js"
+app.use(contactRouter)
+
 // ========================= PAGES =====================================
+
+import pagesRouter from "./routers/pagesRouter.js"
+app.use(pagesRouter)
 
 // import fs from "fs"
 
@@ -21,16 +30,17 @@ app.use(express.static("public"));
 
 // less loading time. server side rendering MEANS NO CORS ERRORS
 
-import { frontpagePage, matchesPage } from './util/pagesUtil.js';
+// THESE HAVE BEEN MADE INTO ROUTERS IN PAGESROUTER.JS !!
+// import { frontpagePage, matchesPage } from './util/pagesUtil.js';
 
-app.get("/", (req, res) => {
-    //res.sendFile(path.resolve('public/pages/frontend/index.html'))
-    res.send(frontpage)
-});
+// app.get("/", (req, res) => {
+//     //res.sendFile(path.resolve('public/pages/frontend/index.html'))
+//     res.send(frontpage)
+// });
 
-app.get("/matches", (req, res) => {
-    res.send(matchesPage)
-});
+// app.get("/matches", (req, res) => {
+//     res.send(matchesPage)
+// });
 
 // ========================= API =======================================
 
@@ -38,10 +48,10 @@ app.get("/matches", (req, res) => {
 
 import { getMatches } from './util/matchesUtil.js';
 
-app.get("/api/matches", async (req, res) => {
-    const matches = await getMatches() // venter på at getMatches() returnere noget 
-    res.send({ data:matches })
-})
+// app.get("/api/matches", async (req, res) => {
+//     const matches = await getMatches() // venter på at getMatches() returnere noget 
+//     res.send({ data:matches })
+// })
 
 
 // falsy values
