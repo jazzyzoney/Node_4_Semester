@@ -1,7 +1,23 @@
 // express concept of middleware: it gets called before the callback function (only runs on the server)
+import 'dotenv/config'
 
 import express from 'express';
 const app = express();
+
+
+// as early as possible so that the rest get session in them too 
+import session from 'express-session'
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
+
+import helmet from 'helmet'
+app.use(helmet())
+
 
 import { rateLimit } from 'express-rate-limit'
 
@@ -26,6 +42,9 @@ const authLimiter = rateLimit({
 
 console.log(authLimiter)
 
+import sessionRouter from './routers/sessionRouter.js'
+app.use(sessionRouter)
+
 import middlewareRouter from './routers/middlewareRouter.js'
 app.use(middlewareRouter)
 
@@ -46,4 +65,4 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log('Server is running on port:', PORT  /* server.adress().port*/); // async behavior. so if not started on a specific server (8080 here) this would be good to see what the port actually is in the console
 });
-console.log("server had started") // this will run and show in console before the callback above. 
+console.log("server has started") // this will run and show in console before the callback above. 
