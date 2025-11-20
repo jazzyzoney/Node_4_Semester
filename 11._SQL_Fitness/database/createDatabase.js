@@ -1,9 +1,13 @@
 import db from './connection.js'
 
-/* queries against the database:
-db.exec
-run DDL
-DCL 
+/*
+db.run for INSERT, UPDATE, DELETE
+db.all for SELECT
+
+queries against the database without parameters:
+-db.exec
+-run DDL
+-DCL 
 */
 
 // const deleteMode = process.argv.find((argument) => argument.includes('delete'))
@@ -41,4 +45,11 @@ CREATE TABLE IF NOT EXISTS exercises (
 );
 `)
 
+//seeding
+//DML
+if (deleteMode) {
+db.run(`INSERT INTO users (username, role) VALUES ('anders', 'STAFF')`)
+db.run(`INSERT INTO exercises (name, difficulty, user_id) VALUES ('squats', 7, 1)`)
+db.run(`INSERT INTO exercises (name, difficulty, user_id) VALUES ('burpees', 6, 1)`)
+}
 
