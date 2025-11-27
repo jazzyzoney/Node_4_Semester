@@ -1,26 +1,40 @@
+
 # SQL
+
 MySQL
-SQLite
-PostgresSQL
-mssql
-h2 
 MariaDB
+SQLite
+PostgreSQL
+mssql
+h2
 
 
-----
+---
+
+# NoSQL
 
 
-# noSQL
+## Document 
 
-## key-value
-redis
+MongoDB
 
-## graph
-Neo4j
+## Key-value
+
+Redis
+
+## Graph
+
+Neo4J
 ArrangoDB
 
-## vector
+## Vector
+
 Qdrant
 MongoDB Atlas
+PostgreSQL
 Pinecone
 
+## Multi-model
+
+DynamoDB
+Cassandara
